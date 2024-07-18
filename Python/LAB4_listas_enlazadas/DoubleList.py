@@ -95,4 +95,13 @@ class DoubleList():
         nx.setPrev(m)
         self.__size += 1
         
+    def remove(self,n):
+        temp = self.first()
+        while (temp != None and temp.getData() != n ):
+            anterior = temp
+            temp = temp.getNext()
+        if temp != None:
+            anterior.setNext(temp.getNext())
+            temp.setNext(None)
+            self.setSize(self.size()-1)
 

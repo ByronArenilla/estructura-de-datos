@@ -2,25 +2,24 @@ from DoubleList import DoubleList
 
 listaDoble = DoubleList()
 for i in range (2,21,2):
-    DoubleList.addLast(i)
-print(DoubleList.first().getData())
-print(DoubleList.last().getData())
-pass
+    listaDoble.addLast(i)
+print(listaDoble.first().getData())
+print(listaDoble.last().getData())
 
 # Mostrando cada elemento de la lista
 print("Elementos de la lista")
-current_node = lista.first()
+current_node = listaDoble.first()
 while current_node is not None:
     print(current_node.getData())
     current_node = current_node.getNext()
 
 #Eliminando el 10 y el 12
-lista.remove(10)
-lista.removeLast()
+listaDoble.remove(10)
+listaDoble.removeLast()
 
 #Mostrando nuevamente la lista
 print("\nElementos de la lista modificada")
-current_node = lista.first()
+current_node = listaDoble.first()
 while current_node is not None:
     print(current_node.getData())
     current_node = current_node.getNext()

@@ -31,7 +31,7 @@ class DoubleNode():
          return self.__prev
 
  ##Pruebas             
-nodo = DoubleNode(10)
+# nodo = DoubleNode(10)
 # print(nodo.getData())
 # nodo.setNext(2)
 # print(nodo.getNext())

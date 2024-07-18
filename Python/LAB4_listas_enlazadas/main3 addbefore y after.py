@@ -112,7 +112,7 @@ posicion_actual = 1
 while nodo_actual is not None and posicion_actual < 3:
     nodo_actual = nodo_actual.getNext()
     posicion_actual += 1
-listaDoble.addAfter(nodo_actual,usuario8)
+listaDoble.addBefore(nodo_actual,usuario8)
 
 
 

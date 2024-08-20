@@ -1,5 +1,5 @@
-from DoubleNode import DoubleNode 
-class DoubleList():
+from Node import Node 
+class Lista():
     def __init__(self):
         self.__head = None
         self.__tail = None
@@ -30,24 +30,22 @@ class DoubleList():
     
     #Métodos para añadir al primero y último de la lista 
     def addFirst(self, e):
-        n = DoubleNode(e)
+        n = Node(e)
         if self.isEmpty():
             self.__head = n
             self.__tail = n
         else:
             n.setNext(self.__head)
-            self.__head.setPrev(n)
             self.__head = n
         self.__size += 1
 
     def addLast(self, e):
-        n = DoubleNode(e)
+        n = Node(e)
         if self.isEmpty():
             self.__head = n
             self.__tail = n
         else:
             self.__tail.setNext(n)
-            n.setPrev(self.__tail)
             self.__tail = n
         self.__size += 1
     #Métodos para elminar el primero y último de la lista 
@@ -58,51 +56,31 @@ class DoubleList():
             temp = self.__head
             self.__head = temp.getNext() #Estableciendo el head en la posición 2
             temp.setNext(None)
-            self.__head.setPrev(None)
             self.__size -= 1
             return temp.getData()
     
     def removeLast(self):
         if self.__size == 1:
             return self.removeFirst()
-        elif self.isEmpty():
-            return None
         else:
             temp = self.__tail
-            self.__tail = temp.getPrev()
-            self.__tail.setNext(None)
-            temp.setPrev(None)
-            self.__size -= 1
+            anterior = self.__head
+            while anterior.getNext() != self.__tail:
+                anterior = anterior.getNext()
+        anterior.setNext(None)
+        self.__tail = anterior 
+        self.__size -= 1
         return temp.getData()
     
-    def addBefore(self,n,e):
-        if n == self.__head:
-            self.addFirst(e)
-        else:
-            m = DoubleNode(e)
-            p = n.getPrev()
-            p.setNext(m)
-            m.setNext(p)
-            m.setNext(n)
-            n.setPrev(m)
-            self.__size +=1
-    def addAfter(self,n,e):
-        m = DoubleNode(e)
-        nx = n.getNext()
-        n.setNext(m)
-        m.setPrev(n)
-        m.setNext(nx)
-        nx.setPrev(m)
-        self.__size += 1
-        
-   
-    #Organizar remove. Este no es el remove de listaDouble sino el de agenda (una aplicación del código)
     def remove(self,n):
-      temp = self.first()
-      while (temp != None and temp.getData() != n ):
-          anterior = temp
-          temp = temp.getNext()
-      if temp != None:
-          anterior.setNext(temp.getNext())
-          temp.setNext(None)
-          self.setSize(self.size()-1)
+        temp = self.first()
+        while (temp != None and temp.getData() != n ):
+            anterior = temp
+            temp = temp.getNext()
+        if temp != None:
+            anterior.setNext(temp.getNext())
+            temp.setNext(None)
+            self.setSize(self.size()-1)
+
+
+        

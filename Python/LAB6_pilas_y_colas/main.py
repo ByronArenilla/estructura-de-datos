@@ -15,8 +15,8 @@ turnos.registrar(usuario3)
 turnos.registrar(usuario4)
 turnos.registrar(usuario5)
 
-turnos.toFile()
-
-# turnos.atenderSiguiente()
-# turnos.atenderSiguiente()
 # turnos.toFile()
+
+turnos.atenderSiguiente()
+turnos.atenderSiguiente()
+turnos.toFile()

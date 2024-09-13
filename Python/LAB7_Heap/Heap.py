@@ -82,7 +82,7 @@ class Heap():
 
 # Generar un arreglo de 20 enteros aleatorios entre 1 y 100
 #arreglo_aleatorio = [random.randint(1, 100) for _ in range(20)]
-arreglo = [1,20,15,30,50,7,10,40,23,21,14,18,56,64,72,19,25,33,84,86]
+arreglo = [1,20,15,30,50]
 
 #print(arreglo_aleatorio)
 

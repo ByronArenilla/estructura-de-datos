@@ -5,11 +5,9 @@ class BinaryTree():
     def __init__(self):
         self.__root = None
         self.__size = 0
-    def _increaseSize(self):
-        self.__size += 1
 
-    def _decreaseSize(self):
-        self.__size -= 1
+    def size(self):
+        return self.__size
 
     def isEmpty(self):
         return self.__size == 0

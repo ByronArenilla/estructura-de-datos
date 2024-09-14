@@ -1,31 +1,33 @@
-#Esto es un nodo dobel, sólo que en vez de prev y next tiene left y rigth
-class Node():
-     def __init__(self,data):
-         self.__data = data
-         self.left = None
-         self.rigth = None
+class Node:
+    def __init__(self, data):
+        self.__data = data
+        self.left = None
+        self.right = None
+        self.__next = None  # Añadir atributo __next para listas enlazadas
 
-         ##Set
+    ## Setters para el árbol binario
+    def setData(self, d):
+        self.__data = d
 
-     #Método para establecer el dato de un Nodo
-     def setData(self,d):
-         self.__data = d
-     
-     #Método para establecer la conexión al nodo siguiente
-     def setRigth(self,n):
-         self.rigth = n
-     
-     #Método para establecer la conexión al nodo izquierdo
-     def setLeft(self,p):
-         self.left = p
+    def setRight(self, n):
+        self.right = n
 
-         ##Get
-     
-     def getData(self):
-         return self.__data
-     
-     def getRigth(self):
-         return self.rigth
-     
-     def getLeft(self):
-         return self.left
+    def setLeft(self, p):
+        self.left = p
+
+    ## Setters y Getters para listas enlazadas
+    def setNext(self, n):  # Método para listas enlazadas
+        self.__next = n
+
+    def getNext(self):  # Método para listas enlazadas
+        return self.__next
+
+    ## Getters para el árbol binario
+    def getData(self):
+        return self.__data
+
+    def getRight(self):
+        return self.right
+
+    def getLeft(self):
+        return self.left

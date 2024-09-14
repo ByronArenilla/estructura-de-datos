@@ -1,111 +1,115 @@
 from Queue import Queue
 from Node import Node
+
 class BinaryTree():
-    def __init__(self) :
+    def __init__(self):
         self.__root = None
         self.__size = 0
+    def _increaseSize(self):
+        self.__size += 1
 
-    #Tamaños del árbol
-    def size(self):
-        return self.__size
+    def _decreaseSize(self):
+        self.__size -= 1
+
     def isEmpty(self):
         return self.__size == 0
-    
-    #Métodos booleanos
+
+    # Métodos booleanos
     def isRoot(self, v):
         return v == self.__root
     
-    def hasLeft(self,v):
-        return v.getLeft() != None
+    def hasLeft(self, v):
+        return v.getLeft() is not None
     
     def hasRight(self, v):
-        return v.getRight() != None
+        return v.getRight() is not None
     
     def isInternal(self, v):
         return self.hasLeft(v) or self.hasRight(v)
     
-    #Métodos de altura y profundidad
+    # Métodos de altura y profundidad
     def depth(self, v):
-        if self.isRoot(v): #Caso base
+        if self.isRoot(v):  # Caso base
             return 0
-        else: #Llamado recursivo
+        else:  # Llamada recursiva
             return 1 + self.depth(self.parent(v))
     
     def height(self, v):
-        if not self.isInternal(self,v): #Caso base
+        if not self.isInternal(v):  # Caso base
             return 0
         else:
             h = 0
-            h = max(self.height(self.left))
+            if self.hasLeft(v):
+                h = max(h, self.height(self.left(v)))
+            if self.hasRight(v):
+                h = max(h, self.height(self.right(v)))
             return 1 + h
     
-    #Métodos acceso a nodos
+    # Métodos de acceso a nodos
     def root(self):
         return self.__root
     
     def left(self, v):
         return v.getLeft()
     
-    def right(self,v):
+    def right(self, v):
         return v.getRight()
     
-    def parent(self,v):
+    def parent(self, v):
         if self.isRoot(v):
             return None
-        
         else:
             Q = Queue()
-            Q.enqueque(self.__root)
+            Q.enqueque(self.__root)  # Cambiado a enqueque en lugar de put
             temp = self.__root
-        while not Q.isEmpty() and self.left(Q.first()) != v and self.right(Q.first()) != v:
+        
+        while not Q.isEmpty() and self.left(temp) != v and self.right(temp) != v:
             temp = Q.dequeque()
 
-        if self.hasLeft(temp):
-            Q.enqueque(self.left(temp))
-        if self.hasRight(temp):
-            Q.enqueque(self.right(temp))
+            if self.hasLeft(temp):
+                Q.enqueque(self.left(temp))
+            if self.hasRight(temp):
+                Q.enqueque(self.right(temp))
         return temp
     
+    # Métodos de inserción
     def addRoot(self, e):
-        self.__root = Node(e) 
-        self.__size= 1
-
+        self.__root = Node(e)
+        self.__size = 1
     
-    def insertLeft(self, v,e):
+    def insertLeft(self, v, e):
         left = Node(e)
-        v.setLeft(self.left())
-        self.__size +=1
+        v.setLeft(left)
+        self.__size += 1
     
     def insertRight(self, v, e):
         right = Node(e)
-        v.setRight(self.right())
+        v.setRight(right)
         self.__size += 1
 
-    def remove(self,v):
+    # Método para eliminar un nodo
+    def remove(self, v):
         p = self.parent(v)
-        #v tiene al menos un hijo - caso 1
+        
+        # Caso 1: el nodo tiene un hijo
         if self.hasLeft(v) or self.hasRight(v):
-            if self.hasLeft(v):
-                child = self.left(v)
-            else:
-                child = self.right(v)
-            #Se conceta el hijo de v al padre
+            child = self.left(v) if self.hasLeft(v) else self.right(v)
+            
             if self.left(p) == v:
                 p.setLeft(child)
             else:
-                p.setRigth(child)
+                p.setRight(child)
 
-            #Se desconecta el nodo v
             v.setLeft(None)
-            v.setNext(None)
+            v.setRight(None)
+        
+        # Caso 2: el nodo no tiene hijos
         else:
-            # v no tiene hijos - caso 2
             if self.left(p) == v:
                 p.setLeft(None)
             else:
-                p.setRigth(None)
+                p.setRight(None)
+        self.__size -= 1
 
-
-
-
-
+    def size(self):
+        return self.__size

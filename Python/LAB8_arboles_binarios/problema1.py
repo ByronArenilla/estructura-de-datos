@@ -1,42 +1,29 @@
-from BinarySearchTree import BinarySearchTree
+from BST import BST
+bst = BST()
+    
+# Insertar nodos
+keys = [50, 30, 20, 40, 70, 60, 80]
+for key in keys:
+    bst.insert(key)
 
-# Crear el árbol de búsqueda binario
-bst = BinarySearchTree()
+print("Árbol BST:")
+bst.display()
 
-# Insertar elementos
-bst.insert("Valor 1", 10)
-bst.insert("Valor 2", 5)
-bst.insert("Valor 3", 15)
-bst.insert("Valor 4", 2)
-bst.insert("Valor 5", 7)
-bst.insert("Valor 6", 12)
-bst.insert("Valor 7", 20)
-
-# Mostrar el árbol
-print("Árbol binario de búsqueda:")
-bst.printTree(bst.root())
-
-# Recorrido inorder
-print("\nRecorrido inorder:")
-bst.inOrderTraversal(bst.root())
-print()  # Nueva línea
-
-# Encontrar máximo y mínimo
-# Obtener el valor mínimo y máximo directamente
-min_value = bst.findMin()  # Ya es un BSTEntry, no un Node
-max_value = bst.findMax()  # Ya es un BSTEntry, no un Node
-
-
-print(f"\nValor máximo: {max_value.getValue()} (Clave: {max_value.getKey()})")
-print(f"Valor mínimo: {min_value.getValue()} (Clave: {min_value.getKey()})")
+print("\nRecorrido Inorder:")
+bst.inorder()
 
 # Buscar un nodo
-nodo = bst.find(7)
-print(f"\nNodo encontrado: {nodo.getData().getValue()}")  # Debería imprimir "Valor 5"
+key_to_search = 40
+found_node = bst.search(key_to_search)
+print(f"\nNodo encontrado: {found_node}")
 
 # Eliminar un nodo
-bst.remove(15)
+key_to_delete = 70
+bst.delete(key_to_delete)
+print(f"\nÁrbol después de eliminar {key_to_delete}:")
+bst.display()
 
-# Mostrar el árbol después de eliminar
-print("\nÁrbol binario después de eliminar el nodo con clave 15:")
-bst.printTree(bst.root())
+# Valor máximo y mínimo
+print(f"\nValor máximo: {bst.find_max()}")
+print(f"Valor mínimo: {bst.find_min()}")
+

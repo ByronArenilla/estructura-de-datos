@@ -46,7 +46,7 @@ class BinarySearchTree:
         return node
 
     def search(self, key):
-        """Busca un nodo por su clave."""
+        #Buscar un nodo por su clave
         return self._search(self.root, key)
 
     def _search(self, node, key):
@@ -57,7 +57,7 @@ class BinarySearchTree:
         return self._search(node.right, key)
 
     def find_max(self):
-        """Encuentra el valor máximo en el BST."""
+        #Encontrar el valor máximo en el BST
         if self.root is None:
             return None
         return self._find_max(self.root).value
@@ -68,7 +68,7 @@ class BinarySearchTree:
         return node
 
     def find_min(self):
-        """Encuentra el valor mínimo en el BST."""
+        #Encontrar el valor mínimo en el BST
         if self.root is None:
             return None
         return self._find_min(self.root).value
@@ -78,18 +78,8 @@ class BinarySearchTree:
             node = node.left
         return node
 
-    def display(self):
-        """Muestra el árbol binario."""
-        self._display(self.root, 0)
-
-    def _display(self, node, level):
-        if node is not None:
-            self._display(node.right, level + 1)
-            print(' ' * 4 * level + '->', node.value)
-            self._display(node.left, level + 1)
-
     def inorder(self):
-        """Realiza un recorrido inorder del BST."""
+        #Realiza un recorrido inorder del BST
         self._inorder(self.root)
         print()
 

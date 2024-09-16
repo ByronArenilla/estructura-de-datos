@@ -1,4 +1,7 @@
 from BinarySearchTree import BinarySearchTree
+from binarytree import Node
+from mostrar_arbol import display_with_binarytree
+
 
 
 # Crear una instancia de BinarySearchTree
@@ -15,8 +18,7 @@ bst.insert(60, "Dato 60")
 bst.insert(80, "Dato 80")
 
 # Mostrar el árbol
-print("\nÁrbol después de insertar nodos:")
-bst.display()
+display_with_binarytree(bst)
 
 # Buscar un nodo
 print("\nBuscando nodo con clave 40:")
@@ -30,9 +32,9 @@ else:
 print("\nEliminando nodo con clave 30:")
 bst.delete(30)
 
+
 # Mostrar el árbol después de eliminar un nodo
-print("\nÁrbol después de eliminar nodo con clave 30:")
-bst.display()
+display_with_binarytree(bst)
 
 # Buscar el valor máximo
 print("\nValor máximo en el árbol:")

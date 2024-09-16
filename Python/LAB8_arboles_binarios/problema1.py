@@ -1,29 +1,49 @@
-from BST import BST
-bst = BST()
-    
-# Insertar nodos
-keys = [50, 30, 20, 40, 70, 60, 80]
-for key in keys:
-    bst.insert(key)
+from BinarySearchTree import BinarySearchTree
 
-print("Árbol BST:")
+
+# Crear una instancia de BinarySearchTree
+bst = BinarySearchTree()
+
+# Insertar varios nodos en el árbol
+print("Insertando nodos...")
+bst.insert(50, "Dato 50")
+bst.insert(30, "Dato 30")
+bst.insert(20, "Dato 20")
+bst.insert(40, "Dato 40")
+bst.insert(70, "Dato 70")
+bst.insert(60, "Dato 60")
+bst.insert(80, "Dato 80")
+
+# Mostrar el árbol
+print("\nÁrbol después de insertar nodos:")
 bst.display()
-
-print("\nRecorrido Inorder:")
-bst.inorder()
 
 # Buscar un nodo
-key_to_search = 40
-found_node = bst.search(key_to_search)
-print(f"\nNodo encontrado: {found_node}")
+print("\nBuscando nodo con clave 40:")
+nodo_buscado = bst.search(40)
+if nodo_buscado:
+    print(f"Encontrado: {nodo_buscado.value}")
+else:
+    print("No encontrado.")
 
 # Eliminar un nodo
-key_to_delete = 70
-bst.delete(key_to_delete)
-print(f"\nÁrbol después de eliminar {key_to_delete}:")
+print("\nEliminando nodo con clave 30:")
+bst.delete(30)
+
+# Mostrar el árbol después de eliminar un nodo
+print("\nÁrbol después de eliminar nodo con clave 30:")
 bst.display()
 
-# Valor máximo y mínimo
-print(f"\nValor máximo: {bst.find_max()}")
-print(f"Valor mínimo: {bst.find_min()}")
+# Buscar el valor máximo
+print("\nValor máximo en el árbol:")
+max_value = bst.find_max()
+print(f"Máximo: {max_value}")
 
+# Buscar el valor mínimo
+print("\nValor mínimo en el árbol:")
+min_value = bst.find_min()
+print(f"Mínimo: {min_value}")
+
+# Realizar un recorrido inorder
+print("\nRecorrido inorder del árbol:")
+bst.inorder()

@@ -30,7 +30,7 @@ class Chained_Hash:
         print(f"Elemento {valor} insertado en la posición {indice}")
 
     def buscar(self, valor):
-        """Buscar un dato dada su clave."""
+        #Buscar un dato dada su clave.#
         if self.metodo.lower() == "multiplicacion":
             indice = self.multiplicar(valor)
         elif self.metodo.lower() == "division":
@@ -51,13 +51,13 @@ class Chained_Hash:
             if nodo.getData() == valor:
                 print(f"Valor {valor} encontrado en la posición {indice}.")
                 return valor
-            nodo = nodo.next
+            nodo = nodo.getNext()
         
         print(f"El valor {valor} no fue encontrado.")
         return None
 
     def eliminar(self, valor):
-        """Eliminar un dato dada su clave."""
+        #Eliminar un dato dada su clave.#
         if self.metodo.lower() == "multiplicacion":
             indice = self.multiplicar(valor)
         elif self.metodo.lower() == "division":
@@ -79,7 +79,7 @@ class Chained_Hash:
                 listaDoble.remove(nodo)
                 print(f"Valor {valor} eliminado de la posición {indice}.")
                 return
-            nodo = nodo.next
+            nodo = nodo.getNext()
         
         print(f"El valor {valor} no se encuentra en la tabla.")
     
